@@ -1,8 +1,12 @@
 import { Injectable } from '@nestjs/common';
+import { Echo } from './model';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World 2';
+  getHello(): Echo {
+    return {
+      message: 'Hello World!',
+      timestamp: new Date(),
+    };
   }
 }
