@@ -14,11 +14,7 @@ function App() {
     <div className="container mx-auto bg-gray-100 rounded-xl shadow border p-8 m-4">
 
       <div>
-        message: <strong>{data?.message}</strong>
-      </div>
-
-      <div>
-        timestamp: <strong>{data?.timestamp}</strong>
+        message: <strong>{data?.message}</strong> server timestamp: <strong>{data?.timestamp}</strong>
       </div>
 
       <ul>
