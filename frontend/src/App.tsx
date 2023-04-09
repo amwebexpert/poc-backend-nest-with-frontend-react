@@ -1,20 +1,19 @@
-import { Header } from 'components/Header';
-import { Button } from 'components/Button';
-import { ReactComponent as Logo } from 'assets/favicon.svg';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Echo } from "./domain/echo";
 
 function App() {
+  const [data, setData] = useState<Echo>();
+
   useEffect(() => {
     fetch('/api')
-      .then((res) => res.text())
-      .then((data) => console.log(data));
+      .then((res) => res.json())
+      .then(setData);
   }, []);
 
   return (
     <div className="App">
-      <Header title="hola" />
-      <Logo height={100} width={100} />
-      <Button onClick={() => alert('hola')}>Heyo</Button>
+      <div>message: <strong>{data?.message}</strong></div>
+      <div>timestamp: <strong>{data?.timestamp}</strong></div>
     </div>
   );
 }

@@ -9,6 +9,7 @@ export default defineConfig({
   envDir: './env',
   plugins: [react(), tsconfigPaths(), svgrPlugin()],
   server: {
+    port: 3001,
     proxy: {
       '/api': {
         target: 'http://localhost:3000',
