@@ -13,8 +13,10 @@ export class DownloadController {
   buffer(@Res() response: Response) {
     const file = this.downloadService.fileBuffer('icon.png');
 
-    response.contentType('image/png');
-    response.attachment('buffer-image-example.png'); // this set the Content-Disposition header
+    response.set({
+      'Content-Type': 'image/png',
+      'Content-Disposition': 'attachment; filename="buffer-image-example.png"',
+    });
 
     response.send(file);
   }
@@ -23,20 +25,24 @@ export class DownloadController {
   stream(@Res() response: Response) {
     const file = this.downloadService.fileStream('icon.png');
 
-    response.contentType('image/png');
-    response.attachment('stream-image-example.png'); // this set the Content-Disposition header
+    response.set({
+      'Content-Type': 'image/png',
+      'Content-Disposition': 'attachment; filename="stream-image-example.png"',
+    });
 
     file.pipe(response);
   }
 
   @Get('streamable')
   streamable(@Res({ passthrough: true }) response: Response) {
-    const file = this.downloadService.fileStream('package.json');
+    const file = this.downloadService.fileStream('example.json');
     // or
     // const file = this.downloadService.fileBuffer('package.json');
 
-    response.contentType('application/json');
-    response.attachment('streamable-example.json'); // this set the Content-Disposition header
+    response.set({
+      'Content-Type': 'application/json',
+      'Content-Disposition': 'attachment; filename="streamable-example.json"',
+    });
 
     return new StreamableFile(file); // 👈 supports Buffer and Stream
   }

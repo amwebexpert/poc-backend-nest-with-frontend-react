@@ -1,0 +1,7 @@
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "description": "Startup kit for bootstraping a brand new project with NestJS & React",
+  "author": "amwebexpert@gmail.com",
+  "license": "MIT"
+}

@@ -14,10 +14,10 @@ export class DownloadService {
   }
 
   fileBuffer(filename: string) {
-    return readFileSync(join(process.cwd(), filename));
+    return readFileSync(join(process.cwd(), 'public', filename));
   }
 
   fileStream(filename: string) {
-    return createReadStream(join(process.cwd(), filename));
+    return createReadStream(join(process.cwd(), 'public', filename));
   }
 }

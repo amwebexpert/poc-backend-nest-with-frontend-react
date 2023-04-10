@@ -3,9 +3,9 @@ import { Echo } from './model';
 
 @Injectable()
 export class AppService {
-  getHello(): Echo {
+  echo(): Echo {
     return {
-      message: 'Hello World!',
+      message: 'NestJS backend server',
       timestamp: new Date(),
     };
   }
